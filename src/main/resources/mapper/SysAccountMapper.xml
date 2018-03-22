@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yijigu.springbootdemo.dao.SysAccountMapper">
+  <resultMap id="BaseResultMap" type="com.yijigu.springbootdemo.domain.SysAccount">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="org" jdbcType="VARCHAR" property="org" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="lastlogintime" jdbcType="TIMESTAMP" property="lastlogintime" />
+    <result column="lastloginip" jdbcType="VARCHAR" property="lastloginip" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="isdelete" jdbcType="INTEGER" property="isdelete" />
+    <result column="crtime" jdbcType="TIMESTAMP" property="crtime" />
+    <result column="cruser" jdbcType="VARCHAR" property="cruser" />
+    <result column="modifytime" jdbcType="TIMESTAMP" property="modifytime" />
+    <result column="modifyuser" jdbcType="VARCHAR" property="modifyuser" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, org, code, password, lastlogintime, lastloginip, status, isdelete, crtime, cruser, 
+    modifytime, modifyuser
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_account
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <select id="queryPageList" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_account
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sys_account
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yijigu.springbootdemo.domain.SysAccount">
+    insert into sys_account (id, org, code, 
+      password, lastlogintime, lastloginip, 
+      status, isdelete, crtime, 
+      cruser, modifytime, modifyuser
+      )
+    values (#{id,jdbcType=BIGINT}, #{org,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{lastlogintime,jdbcType=TIMESTAMP}, #{lastloginip,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{isdelete,jdbcType=INTEGER}, #{crtime,jdbcType=TIMESTAMP}, 
+      #{cruser,jdbcType=VARCHAR}, #{modifytime,jdbcType=TIMESTAMP}, #{modifyuser,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yijigu.springbootdemo.domain.SysAccount">
+    insert into sys_account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="org != null">
+        org,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="lastlogintime != null">
+        lastlogintime,
+      </if>
+      <if test="lastloginip != null">
+        lastloginip,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="isdelete != null">
+        isdelete,
+      </if>
+      <if test="crtime != null">
+        crtime,
+      </if>
+      <if test="cruser != null">
+        cruser,
+      </if>
+      <if test="modifytime != null">
+        modifytime,
+      </if>
+      <if test="modifyuser != null">
+        modifyuser,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="org != null">
+        #{org,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="lastlogintime != null">
+        #{lastlogintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastloginip != null">
+        #{lastloginip,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null">
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="crtime != null">
+        #{crtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cruser != null">
+        #{cruser,jdbcType=VARCHAR},
+      </if>
+      <if test="modifytime != null">
+        #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyuser != null">
+        #{modifyuser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yijigu.springbootdemo.domain.SysAccount">
+    update sys_account
+    <set>
+      <if test="org != null">
+        org = #{org,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="lastlogintime != null">
+        lastlogintime = #{lastlogintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastloginip != null">
+        lastloginip = #{lastloginip,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null">
+        isdelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="crtime != null">
+        crtime = #{crtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cruser != null">
+        cruser = #{cruser,jdbcType=VARCHAR},
+      </if>
+      <if test="modifytime != null">
+        modifytime = #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyuser != null">
+        modifyuser = #{modifyuser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yijigu.springbootdemo.domain.SysAccount">
+    update sys_account
+    set org = #{org,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      lastlogintime = #{lastlogintime,jdbcType=TIMESTAMP},
+      lastloginip = #{lastloginip,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      isdelete = #{isdelete,jdbcType=INTEGER},
+      crtime = #{crtime,jdbcType=TIMESTAMP},
+      cruser = #{cruser,jdbcType=VARCHAR},
+      modifytime = #{modifytime,jdbcType=TIMESTAMP},
+      modifyuser = #{modifyuser,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
