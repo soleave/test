@@ -9,8 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>springboot-demo</name>
-	<description>Demo project for Spring Boot testtest</description>
-
+	<description>Demo project for Spring Boot testtestmaster</description>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
